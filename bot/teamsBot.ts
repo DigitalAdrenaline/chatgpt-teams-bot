@@ -5,7 +5,8 @@ import {
 } from "botbuilder";
 import rawWelcomeCard from "./adaptiveCards/welcome.json" assert { type: "json" };
 import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
-import { ChatGPTAPI } from 'chatgpt';
+// import { ChatGPTAPI } from 'chatgpt';
+import { AzureChatGPTAPI } from "@freistli/azurechatgptapi";
 import config from "./config.js";
 
 export class TeamsBot extends TeamsActivityHandler {
@@ -13,9 +14,14 @@ export class TeamsBot extends TeamsActivityHandler {
   constructor() {
     super();
 
-    const api = new ChatGPTAPI({
-      apiKey: config.openaiApiKey,
-    });
+    const api = new AzureChatGPTAPI(
+      {
+        apiKey: config.openaiApiKey,
+        apiBaseUrl: config.apiendpoint,
+        debug: false
+      },
+      config.deploymentName
+    );
 
     let parentMessageId;
 

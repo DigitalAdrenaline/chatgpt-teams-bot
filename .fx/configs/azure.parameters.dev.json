@@ -7,6 +7,8 @@
         "botAadAppClientId": "{{state.teams-bot.botId}}",
         "botAadAppClientSecret": "{{state.teams-bot.botPassword}}",
         "openaiApiKey": "{{$env.OPENAI_API_KEY}}",
+        "endpoint": "{{$env.OPENAI_ENDPOINT}}",
+        "deploymentName": "{{$env.OPENAI_DEPLOYMENT_NAME}}",
         "resourceBaseName": "chatgptbot{{state.solution.resourceNameSuffix}}",
         "botDisplayName": "chatgpt-bot"
       }
